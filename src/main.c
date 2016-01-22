@@ -72,15 +72,7 @@ void StartDefaultTask(void const * argument);
 
 /* USER CODE END 0 */
 
-int main(void)
-{
-
-  /* USER CODE BEGIN 1 */
-
-  /* USER CODE END 1 */
-
-  /* MCU Configuration----------------------------------------------------------*/
-
+int main(void) {
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
 
@@ -93,52 +85,16 @@ int main(void)
   MX_USART3_UART_Init();
   MX_USB_OTG_FS_PCD_Init();
 
-  /* USER CODE BEGIN 2 */
-
-  /* USER CODE END 2 */
-
-  /* USER CODE BEGIN RTOS_MUTEX */
-  /* add mutexes, ... */
-  /* USER CODE END RTOS_MUTEX */
-
-  /* USER CODE BEGIN RTOS_SEMAPHORES */
-  /* add semaphores, ... */
-  /* USER CODE END RTOS_SEMAPHORES */
-
-  /* USER CODE BEGIN RTOS_TIMERS */
-  /* start timers, add new ones, ... */
-  /* USER CODE END RTOS_TIMERS */
-
   /* Create the thread(s) */
   /* definition and creation of defaultTask */
   osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
 
-  /* USER CODE BEGIN RTOS_THREADS */
-  /* add threads, ... */
-  /* USER CODE END RTOS_THREADS */
-
-  /* USER CODE BEGIN RTOS_QUEUES */
-  /* add queues, ... */
-  /* USER CODE END RTOS_QUEUES */
- 
-
   /* Start scheduler */
   osKernelStart();
   
   /* We should never get here as control is now taken by the scheduler */
-
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-  while (1)
-  {
-  /* USER CODE END WHILE */
-
-  /* USER CODE BEGIN 3 */
-
-  }
-  /* USER CODE END 3 */
-
+  while (1);
 }
 
 /** System Clock Configuration
